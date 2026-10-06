@@ -33,6 +33,9 @@ function getRecipe() {
 }
 
 // Skriv ut recept
+function printRecipe() {
+
+}
 
 
 // Eventlyssnare för recept söknings formuläret 
