@@ -28,7 +28,23 @@ function validateSearch() {
 }
 
 // Hämta recept
+function getRecipe() {
 
+}
 
 // Skriv ut recept
 
+
+// Eventlyssnare för recept söknings formuläret 
+form.addEventListener("submit", function(event) {
+
+    // Hindrar sidan att läsas om
+    event.preventDefault();
+
+    // Kollar att validateSearch kommer tillbaka true för att kunna hämta receptet
+    if (validateSearch() === true) {
+
+        // Anropar getRecipe för att få receptet
+        getRecipe();
+    }
+});
