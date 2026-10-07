@@ -28,7 +28,39 @@ function validateSearch() {
 }
 
 // Hämta recept
-function getRecipe() {
+async function getRecipe() {
+
+    // skapa konstanter
+    const searchFood = searchInput.value.trim();
+    const url = "https://dummyjson.com/recipes/search?q=" + searchFood;
+
+    try {
+
+        apiError.textContent = "";
+        const response = await fetch(url); // Hämtar svar ifrån API
+
+        // Checkar att API anropet lyckades 
+        if (!response.ok) {
+            throw new Error("Fel vid hämtning... ");
+        }
+
+        const data = await response.json(); // Omvandlar JSON strängar till JS data
+
+        if(data.recipes.length === 0) {
+
+            apiError.textContent = "Inget recept hittades! Testa ny sökfras.";
+            return;
+        }
+
+        const recipe = data.recipes[0]; // Hämtar första objektet i arrayen
+
+    } catch (error) {
+        apiError.textContent = "Ett fel uppstod vid hämtning av receptet."; // Felmeddelande för användaren
+        console.error("Ett fel uppstod: ", error);
+    }
+
+    //Anropar printRecipe
+    printRecipe(recipe);
 
 }
 
