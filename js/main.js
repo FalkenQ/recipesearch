@@ -55,6 +55,7 @@ async function getRecipe() {
         const recipe = data.recipes[0]; // Hämtar första objektet i arrayen
         //Anropar printRecipe
         printRecipe(recipe);
+        console.log(recipe);
 
     } catch (error) {
         apiError.textContent = "Ett fel uppstod vid hämtning av receptet."; // Felmeddelande för användaren
@@ -76,12 +77,32 @@ function printRecipe(recipe) {
     const heading = document.createElement("h3");
     heading.textContent = recipe.name;
 
-    // Skapar en paragraf
-   // const paragraph = document.createElement("p");
-    //paragraph.textContent = recipe.servings;
-
+    // Lägger till heading i article
     article.appendChild(heading);
-    //article.appendChild(paragraph);
+
+    // Skapar paragraferna
+    const recipeInfo = document.createElement("div");
+    recipeInfo.classList.add("recipie-info");
+
+    // Skapa en paragraf för servings
+    const servings = document.createElement("p");
+    servings.textContent = "Servings: " + recipe.servings;
+
+    // Skapa en paragraf för prep time
+    const prepTime = document.createElement("p");
+    prepTime.textContent = "Prep time: " + recipe.prepTimeMinutes;
+
+    // Skapa en paragraf för Cooking time
+    const cookingTime = document.createElement("p");
+    cookingTime.textContent = "Cooking time: " + recipe.cookTimeMinutes;
+
+    // Skapa en paragraf för difficulty
+    const recipeDifficulty = document.createElement("p");
+    recipeDifficulty.textContent = "Difficulty: " + recipe.difficulty;
+
+    // Lägger till alla paragrafer i recipe-info
+    article.append(servings, prepTime, cookingTime, recipeDifficulty);
+
 
     recipeSection.appendChild(article);
 }
