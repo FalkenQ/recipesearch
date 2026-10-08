@@ -21,6 +21,7 @@ function validateSearch() {
     // Checkar ifall formuläret är tomt
     if (searchInput.value.trim() === "") {
         formError.textContent = "Felaktig inmatning. Testa ny sökfras.";
+        recipeSection.textContent = "";
         return false;
     }
 
@@ -49,10 +50,12 @@ async function getRecipe() {
         if(data.recipes.length === 0) {
 
             apiError.textContent = "Inget recept hittades! Testa ny sökfras.";
+            recipeSection.textContent = "";
             return;
         }
 
         const recipe = data.recipes[0]; // Hämtar första objektet i arrayen
+        
         //Anropar printRecipe
         printRecipe(recipe);
         console.log(recipe);
