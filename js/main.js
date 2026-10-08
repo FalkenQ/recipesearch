@@ -53,20 +53,37 @@ async function getRecipe() {
         }
 
         const recipe = data.recipes[0]; // Hämtar första objektet i arrayen
+        //Anropar printRecipe
+        printRecipe(recipe);
 
     } catch (error) {
         apiError.textContent = "Ett fel uppstod vid hämtning av receptet."; // Felmeddelande för användaren
         console.error("Ett fel uppstod: ", error);
     }
 
-    //Anropar printRecipe
-    printRecipe(recipe);
-
 }
 
 // Skriv ut recept
-function printRecipe() {
+function printRecipe(recipe) {
 
+    // Tömmer recept sektionen
+    recipeSection.textContent = "";
+
+    // Skapar en article
+    const article = document.createElement("article");
+
+    // Skapar en rubrik
+    const heading = document.createElement("h3");
+    heading.textContent = recipe.name;
+
+    // Skapar en paragraf
+   // const paragraph = document.createElement("p");
+    //paragraph.textContent = recipe.servings;
+
+    article.appendChild(heading);
+    //article.appendChild(paragraph);
+
+    recipeSection.appendChild(article);
 }
 
 
