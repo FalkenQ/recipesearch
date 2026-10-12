@@ -58,10 +58,10 @@ async function getRecipe() {
         
         //Anropar printRecipe
         printRecipe(recipe);
-        console.log(recipe);
 
     } catch (error) {
         apiError.textContent = "Ett fel uppstod vid hämtning av receptet."; // Felmeddelande för användaren
+        recipeSection.textContent = ""; // Rensar ifall API anropet misslyckas.
         console.error("Ett fel uppstod: ", error);
     }
 
@@ -108,6 +108,7 @@ function printRecipe(recipe) {
 
 
     // Skapar sektionen för ingredienser och instruktioner
+    const recipeDetails = document.createElement("div");
 
     // Skapar rubrik för ingredienserna
     const ingredientsHeading = document.createElement("h4");
@@ -139,13 +140,16 @@ function printRecipe(recipe) {
         instructionsList.appendChild(instListEl); // lägger till den aktuella ingrediensen i instruktionslistan
     }
 
-    // Lägger till alla paragrafer i recipe-info
-    article.append(heading, image,);
-
+    // Lägger till alla paragrafer i recipeInfo
     recipeInfo.append(servings, prepTime, cookingTime, recipeDifficulty);
 
-    article.appendChild(recipeInfo);
+    // Lägger till alla paragrafer i recipeDetails
+    recipeDetails.append(ingredientsHeading, ingredientsList, instructionsHeading, instructionsList);
 
+    // Lägger till Maträttens namn och bild
+    article.append(heading, image, recipeInfo, recipeDetails);
+
+    // Lägger till article i recipeSection
     recipeSection.appendChild(article);
 
 }
