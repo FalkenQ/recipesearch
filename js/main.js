@@ -108,20 +108,36 @@ function printRecipe(recipe) {
 
 
     // Skapar sektionen för ingredienser och instruktioner
+
+    // Skapar rubrik för ingredienserna
     const ingredientsHeading = document.createElement("h4");
     ingredientsHeading.textContent = "Ingredients";
 
+    // Skapar rubrik för instruktionerna
     const instructionsHeading = document.createElement("h4");
     instructionsHeading.textContent = "Instructions";
 
+    // Skapar samlings elementet för ingredienserna från for loopen
     const ingredientsList = document.createElement("ul");
 
+    // Skapar samlings element för instruktioner från for loopen
+    const instructionsList = document.createElement("ol");
+
+    // for loop för att gå igenom arrayen för ingrediens
     for (let i = 0; i < recipe.ingredients.length; i++) {
         const ingredListEl = document.createElement("li");
         ingredListEl.textContent = recipe.ingredients[i];
 
-        ingredientsList.appendChild(ingredListEl);
-    } 
+        ingredientsList.appendChild(ingredListEl); // lägger till den aktuella ingrediensen i ingredienslistan
+    }
+
+    // for loop för att gå igenom arrayen för instruktioner
+    for (let i = 0; i < recipe.instructions.length; i++) {
+        const instListEl = document.createElement("li");
+        instListEl.textContent = recipe.instructions[i];
+
+        instructionsList.appendChild(instListEl); // lägger till den aktuella ingrediensen i instruktionslistan
+    }
 
     // Lägger till alla paragrafer i recipe-info
     article.append(heading, image,);
