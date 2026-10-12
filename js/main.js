@@ -76,7 +76,7 @@ function printRecipe(recipe) {
     // Skapar en article
     const article = document.createElement("article");
 
-    // Skapar en rubrik
+    // Skapar en rubrik 
     const heading = document.createElement("h3");
     heading.textContent = recipe.name;
 
@@ -84,6 +84,7 @@ function printRecipe(recipe) {
     const image = document.createElement("img");
     image.src = recipe.image;
     image.alt = recipe.name;
+
 
     // Skapar paragraferna
     const recipeInfo = document.createElement("div");
@@ -105,8 +106,25 @@ function printRecipe(recipe) {
     const recipeDifficulty = document.createElement("p");
     recipeDifficulty.textContent = "Difficulty: " + recipe.difficulty;
 
+
+    // Skapar sektionen för ingredienser och instruktioner
+    const ingredientsHeading = document.createElement("h4");
+    ingredientsHeading.textContent = "Ingredients";
+
+    const instructionsHeading = document.createElement("h4");
+    instructionsHeading.textContent = "Instructions";
+
+    const ingredientsList = document.createElement("ul");
+
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+        const ingredListEl = document.createElement("li");
+        ingredListEl.textContent = recipe.ingredients[i];
+
+        ingredientsList.appendChild(ingredListEl);
+    } 
+
     // Lägger till alla paragrafer i recipe-info
-    article.append(heading, image);
+    article.append(heading, image,);
 
     recipeInfo.append(servings, prepTime, cookingTime, recipeDifficulty);
 
